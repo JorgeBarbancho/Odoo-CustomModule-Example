@@ -1,19 +1,39 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="bookdatabase.list">
-      <field name="name">bookdatabase list</field>
-      <field name="model">bookdatabase.bookdatabase</field>
+
+<!-- BOOK -->
+
+    <!-- List view -->
+    <record model="ir.ui.view" id="bookdatabase.book_list">
+      <field name="name">Book list</field>
+      <field name="model">bookdatabase.book</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="author_id"/>
+          <field name="publisher_id"/>
         </tree>
       </field>
     </record>
--->
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="bookdatabase.book_form">
+      <field name="name">Book form</field>
+      <field name="model">bookdatabase.book</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" placeholder="Class denomination" required="True"/>
+                </h1>
+            </div>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
 <!--

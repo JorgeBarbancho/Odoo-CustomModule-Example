@@ -39,7 +39,7 @@ class Author(models.Model):
     last_name = fields.Char(size=32, string='Author\'s last name', index=True)
     birthdate = fields.Date('Birthdate')
     deceasedate = fields.Date('Decease date')
-    age = fields.Integer('Age', compute='_age_compute')
+    age = fields.Integer('Age', compute='_age_compute', readonly=True)
     book_ids = fields.One2many('bookdatabase.book','author_id','Books')
 
     @api.depends('birthdate')
@@ -48,6 +48,8 @@ class Author(models.Model):
         for record in self:
             if not record.deceasedate:
                 record.age = relativedelta(today, record.birthdate).years
+            else:
+                record.age = None
 
 class Publisher(models.Model):
     _name = 'bookdatabase.publisher'
@@ -59,8 +61,10 @@ class Publisher(models.Model):
 
 class Comment(models.Model):
     _name = 'bookdatabase.comment'
+    _order = 'datetime_publish'
 
-    date_publish = fields.Date('Publish date')
+    name = fields.Char(size=32, string="Subject")
+    datetime_publish = fields.Datetime('Publish date')
     book_id = fields.Many2one('bookdatabase.book','Book')
     creator_id = fields.Many2one('res.partner','Created by')
     description = fields.Text()
