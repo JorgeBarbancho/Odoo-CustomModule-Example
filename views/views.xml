@@ -24,57 +24,197 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
+            <field name="active" invisible="1"/>
+            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+            <field name="cover" widget='image' class="oe_avatar" options='{"zoom": true}'/>
             <div class="oe_title">
                 <h1>
-                    <field name="name" placeholder="Class denomination" required="True"/>
+                    <field name="name" placeholder="Book's name" required="True"/>
                 </h1>
             </div>
-
+            <group>
+              <group>
+                <field name="author_id"/>
+                <field name="publisher_id"/>
+                <field name="date_publish"/>
+              </group>
+              <group>
+                <field name="creator_id"/>
+              </group>
+            </group>
+            <group>
+              <field name="description"/>
+            </group>
+            <group>
+              <field name="comment_ids" context = "{'book_id': id}"/>
+            </group>
           </sheet>
         </form>
       </field>
     </record>
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="bookdatabase.action_window">
-      <field name="name">bookdatabase window</field>
-      <field name="res_model">bookdatabase.bookdatabase</field>
+    <record model="ir.actions.act_window" id="bookdatabase.book_action_window">
+      <field name="name">Book window</field>
+      <field name="res_model">bookdatabase.book</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="bookdatabase.action_server">
-      <field name="name">bookdatabase server</field>
-      <field name="model_id" ref="model_bookdatabase_bookdatabase"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+<!-- AUTHOR -->
+
+    <!-- List view -->
+    <record model="ir.ui.view" id="bookdatabase.author_list">
+      <field name="name">Author list</field>
+      <field name="model">bookdatabase.author</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="last_name"/>
+          <field name="name"/>
+        </tree>
       </field>
     </record>
--->
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="bookdatabase.author_form">
+      <field name="name">Author form</field>
+      <field name="model">bookdatabase.author</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="image" widget='image' class="oe_avatar" options='{"zoom": true}'/>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="last_name"/>
+              </group>
+              <group>
+                <field name="birthdate"/>
+                <field name="is_dead"/>
+                <field name="deceasedate" attrs="{'invisible':[('is_dead','=',False)]}"/>
+                <field name="age" attrs="{'invisible':[('is_dead','=',True)]}"/>
+              </group>
+            </group>
+            <group>
+              <field name="book_ids"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="bookdatabase.author_action_window">
+      <field name="name">Author window</field>
+      <field name="res_model">bookdatabase.author</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!-- PUBLISHER -->
+
+    <!-- List view -->
+    <record model="ir.ui.view" id="bookdatabase.publisher_list">
+      <field name="name">Publisher list</field>
+      <field name="model">bookdatabase.publisher</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="bookdatabase.publisher_form">
+      <field name="name">Publisher form</field>
+      <field name="model">bookdatabase.publisher</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" placeholder="Publisher's name" required="True"/>
+                </h1>
+            </div>
+            <group>
+              <field name="description"/>
+            </group>
+            <group>
+              <field name="book_ids"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="bookdatabase.publisher_action_window">
+      <field name="name">Publisher window</field>
+      <field name="res_model">bookdatabase.publisher</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!-- COMMENTS -->
+
+    <!-- List view -->
+    <record model="ir.ui.view" id="bookdatabase.comment_list">
+      <field name="name">Comment list</field>
+      <field name="model">bookdatabase.comment</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="datetime_publish"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="bookdatabase.comment_form">
+      <field name="name">Comment form</field>
+      <field name="model">bookdatabase.comment</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="active" invisible="1"/>
+            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" placeholder="Subject" required="True"/>
+                </h1>
+            </div>
+            <group>
+              <group>
+                <field name="book_id"/>
+              </group>
+              <group>
+                <field name="datetime_publish"/>
+                <field name="creator_id"/>
+              </group>
+            </group>
+            <group>
+              <field name="description"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="bookdatabase" id="bookdatabase.menu_root"/>
--->
+
+    <menuitem name="Bookdatabase" id="bookdatabase.menu_root"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="bookdatabase.menu_1" parent="bookdatabase.menu_root"/>
-    <menuitem name="Menu 2" id="bookdatabase.menu_2" parent="bookdatabase.menu_root"/>
--->
+
+    <menuitem name="Books" id="bookdatabase.menu_1" parent="bookdatabase.menu_root" action="bookdatabase.book_action_window"/>
+    <menuitem name="Authors" id="bookdatabase.menu_2" parent="bookdatabase.menu_root" action="bookdatabase.author_action_window"/>
+    <menuitem name="Publishers" id="bookdatabase.menu_3" parent="bookdatabase.menu_root" action="bookdatabase.publisher_action_window"/>
+
     <!-- actions -->
-<!--
-    <menuitem name="List" id="bookdatabase.menu_1_list" parent="bookdatabase.menu_1"
-              action="bookdatabase.action_window"/>
-    <menuitem name="Server to list" id="bookdatabase" parent="bookdatabase.menu_2"
-              action="bookdatabase.action_server"/>
--->
+
+    <!--<menuitem name="List" id="bookdatabase.menu_1_list" parent="bookdatabase.menu_1"
+              action="bookdatabase.action_window"/>-->
+
   </data>
 </odoo>
