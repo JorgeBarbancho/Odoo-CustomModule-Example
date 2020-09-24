@@ -11,6 +11,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="datetime_publish"/>
+          <field name="creator_id"/>
           <field name="name"/>
         </tree>
       </field>
