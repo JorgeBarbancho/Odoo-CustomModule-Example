@@ -284,6 +284,6 @@
 
     <!--<menuitem name="List" id="bookdatabase.menu_1_list" parent="bookdatabase.menu_1"
               action="bookdatabase.action_window"/>-->
-
+<!--TODO VISTA DE BÚSQUEDA-->>
   </data>
 </odoo>
