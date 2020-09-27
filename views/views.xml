@@ -113,6 +113,22 @@
       </field>
     </record>
 
+    <!-- Search view -->
+    <record id="bookdatabase.book_search_view"  model="ir.ui.view">
+      <field name="model">bookdatabase.book</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="author_id"/>
+            <group string="Group By">
+            <filter name="group_by_author" string="Author" context="{'group_by': 'author_id'}"/>
+            <filter name="group_by_publisher" string="Publisher" context="{'group_by': 'publisher_id'}"/>
+            </group>
+        </search>
+      </field>
+    </record>
+  
+    
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="bookdatabase.book_action_window">
       <field name="name">Book window</field>

@@ -23,7 +23,7 @@ class Book(models.Model):
     publisher_id = fields.Many2one('bookdatabase.publisher','Publisher')
     description = fields.Text()
     active = fields.Boolean('Active', default=True)
-    creator_id = fields.Many2one('res.users','Created by')
+    creator_id = fields.Many2one('res.users','Created by',default=lambda self: self.env.user)
     comment_ids = fields.One2many('bookdatabase.comment','book_id','Comments')
 
 class Author(models.Model):

@@ -63,5 +63,38 @@ Actualmente son siete novelas editadas desde 1996 y se basan en las aventuras de
             <field name="creator_id" ref="user_juanramon"/>
             <field name="description">La pell freda és una novel·la de gènere fantàstic amb la qual l'antropòleg barceloní Albert Sánchez Piñol saltà a la fama com a escriptor el 2002, editada per La Campana. La novel·la ha tingut un èxit molt notable amb múltiples reimpressions, traduccions i venda dels drets, i posteriorment se'n va fer una versió cinematogràfica el 2017.[1] L'obra s'ha traduït a 37 llengües, i l'edició en català ha venut més de 150.000 exemplars.[2]</field>
         </record>
+
+        <record id="comment_1" model="bookdatabase.comment">
+            <field name="name">M'ha encantat</field>
+            <field name="datetime_publish" eval="datetime.now()"/>
+            <field name="book_id" ref="book_1"/>
+            <field name="creator_id" ref="user_juanramon"/>
+            <field name="description">No he pogut parar de llegir fins acabar-lo. Una passada!</field>
+        </record>
+
+        <record id="comment_2" model="bookdatabase.comment">
+            <field name="name">Sobrevalorat</field>
+            <field name="datetime_publish" eval="datetime.now()-timedelta(days=1)"/>
+            <field name="book_id" ref="book_1"/>
+            <field name="creator_id" ref="user_nerea"/>
+            <field name="description">Amb aquest autor sempre tinc la sensació de què tots els llibres són iguals. Crec que està sobrevalorat.</field>
+        </record>
+
+        <record id="comment_3" model="bookdatabase.comment">
+            <field name="name">Molt interessant</field>
+            <field name="datetime_publish" eval="datetime.now()-timedelta(days=2)"/>
+            <field name="book_id" ref="book_2"/>
+            <field name="creator_id" ref="user_juanramon"/>
+            <field name="description">No he pogut parar de llegir fins acabar-lo. Una passada!</field>
+        </record>
+
+        <record id="comment_4" model="bookdatabase.comment">
+            <field name="name">No és per a tant</field>
+            <field name="datetime_publish" eval="datetime.now()-timedelta(days=3)"/>
+            <field name="book_id" ref="book_2"/>
+            <field name="creator_id" ref="user_nerea"/>
+            <field name="description">Amb aquest autor sempre tinc la sensació de què tots els llibres són iguals. Crec que està sobrevalorat.</field>
+        </record>
+
     </data>
 </odoo>
