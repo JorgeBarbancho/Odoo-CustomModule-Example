@@ -45,7 +45,7 @@ En 2013, los problemas económicos del Grupo Prisa, cuya deuda roza los 3200 mil
         </record>
 
         <record id="book_1" model="bookdatabase.book">
-            <field name="name">Las aventuras del capitán Alatriste</field>
+            <field name="name">El capitán Alatriste</field>
             <field name="cover" type="base64" file="bookdatabase/static/description/alatriste.png"/>
             <field name="publisher_id" ref="publisher_1"/>
             <field name="author_id" ref="author_1"/>

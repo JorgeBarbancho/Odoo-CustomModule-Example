@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+        <report
+            id="report_book"
+            model="bookdatabase.book"
+            string="Book Report"
+            name="bookdatabase.report_book_view"
+            file="bookdatabase.report_book"
+            report_type="qweb-pdf" />
+        <template id="report_book_view">
+            <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+            <div class="page">
+            <div class="container-fluid">
+                <div class="row mt32 mb32">
+                    <div class="col-7">
+                    </div>
+                    <div class="col-3">
+                        <p class="text-right">
+                            Book no:</p>
+                        <p class="text-right">
+                            Create date:</p>
+                        <p class="text-right">
+                            Created by:</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-right">
+                            <span t-field="doc.id"/></p>
+                        <p class="text-right">
+                            <span t-field="doc.create_date"/></p>
+                        <p class="text-right">
+                            <span t-field="doc.creator_id"/></p>
+                    </div>
+                </div>
+                <h2 class="text-center mt32">
+                    <span t-field="doc.name"/>
+                </h2>
+
+               <div class="row mt32 mb32">
+                   <div class="col-6">
+                        <p><strong>Author:</strong></p>
+                        <p t-field="doc.author_id"/>
+                   </div>
+                   <div class="col-6">
+                        <p><strong>Publisher</strong></p>
+                        <p t-field="doc.publisher_id"/>
+                   </div>
+               </div>
+               <div class="row mt32 mb32">
+                   <div class="col-12">
+                        <p><strong>Description</strong></p>
+                        <p t-field="doc.description"/>
+                   </div>
+               </div>
+               <div class="row mt32 mb32">
+                   <div class="col-12">
+                       <h3>Comments</h3>
+                   </div>
+                   <div class="col-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                        <th>Date</th>
+                                        <th>Creator</th>
+                                        <th>Subject</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.comment_ids" t-as="comment">
+                                    <td><span t-field="comment.datetime_publish"/> </td>
+                                    <td><span t-field="comment.creator_id"/> </td>
+                                    <td><span t-field="comment.name"/> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                   </div>
+               </div>
+            </div>
+            </div>
+            </t>
+            </t>
+            </t>
+        </template>
+    </data>
+</odoo>
