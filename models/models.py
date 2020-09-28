@@ -10,6 +10,7 @@ from datetime import date, datetime
 class Book(models.Model):
     _name = 'bookdatabase.book'
     _description = 'Database\'s books'
+    _order = 'date_publish'
 
     @api.model
     def _default_image(self):
