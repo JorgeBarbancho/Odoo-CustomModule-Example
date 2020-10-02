@@ -1,9 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bookdatabase_book_manager,bookdatabase.book.manager,model_bookdatabase_book,group_bookdatabase_manager,1,1,1,1
-access_bookdatabase_book_user,bookdatabase.book.user,model_bookdatabase_book,group_bookdatabase_user,1,0,0,0
-access_bookdatabase_author_manager,bookdatabase.author.manager,model_bookdatabase_author,group_bookdatabase_manager,1,1,1,1
-access_bookdatabase_author_user,bookdatabase.author.user,model_bookdatabase_author,group_bookdatabase_user,1,0,0,0
-access_bookdatabase_publisher_manager,bookdatabase.publisher.manager,model_bookdatabase_publisher,group_bookdatabase_manager,1,1,1,1
-access_bookdatabase_publisher_user,bookdatabase.publisher.user,model_bookdatabase_publisher,group_bookdatabase_user,1,0,0,0
-access_bookdatabase_comment_manager,bookdatabase.comment.manager,model_bookdatabase_comment,group_bookdatabase_manager,1,1,1,1
-access_bookdatabase_comment_user,bookdatabase.comment.user,model_bookdatabase_comment,group_bookdatabase_user,1,0,1,0
