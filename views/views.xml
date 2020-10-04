@@ -88,6 +88,7 @@
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
             <field name="cover" widget='image' class="oe_avatar" options='{"zoom": true}'/>
             <div class="oe_title">
+                <label for="name" string="Book’s name" class="oe_edit_only"/>
                 <h1>
                     <field name="name" placeholder="Book's name" required="True"/>
                 </h1>
