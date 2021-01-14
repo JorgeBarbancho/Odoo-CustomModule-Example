@@ -26,6 +26,7 @@ class Book(models.Model):
     active = fields.Boolean('Active', default=True)
     creator_id = fields.Many2one('res.users','Created by',default=lambda self: self.env.user)
     comment_ids = fields.One2many('bookdatabase.comment','book_id','Comments')
+    create_date = fields.Datetime('Create Date', default=datetime.now())
 
 class Author(models.Model):
     _name = 'bookdatabase.author'

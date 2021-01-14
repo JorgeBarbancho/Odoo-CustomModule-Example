@@ -1,7 +1,95 @@
 <odoo>
     <data>
 
+        <record id="user_demo" model="res.users">
+            <field name="name">Jorge Demo</field>
+            <field name="login">jorge</field>
+            <field name="password">jorge</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('bookdatabase.group_bookdatabase_user')])]"/>
+            <field name="image_1920" type="base64" file="base/static/img/user_demo-image.jpg"/>
+        </record>
 
+        <record id="author1" model="bookdatabase.author">
+            <field name="name">J. R. R.</field>
+            <field name="last_name">Tolkien</field>
+            <field name="birthdate">1900-01-03</field>
+            <field name="is_dead" eval="True"/>
+            <field name="deceasedate">1973-09-02</field>
+        </record>
 
+        <record id="author2" model="bookdatabase.author">
+            <field name="name">Andrzej</field>
+            <field name="last_name">Sapkowski</field>
+            <field name="birthdate">1948-06-21</field>
+            <field name="is_dead">false</field>
+        </record>
+
+        <record id="publisher1" model="bookdatabase.publisher">
+            <field name="name">Minotauro</field>
+        </record>
+
+        <record id="publisher2" model="bookdatabase.publisher">
+            <field name="name">Alamut</field>
+        </record>
+
+        <record id="book1" model="bookdatabase.book">
+            <field name="name">El Silmarillion</field>
+            <field name="date_publish">1977-01-01</field>
+            <field name="author_id" ref="author1"/>
+            <field name="publisher_id" ref="publisher1"/>
+        </record>
+
+        <record id="book2" model="bookdatabase.book">
+            <field name="name">El Señor de los Anillos</field>
+            <field name="date_publish">1954-01-01</field>
+            <field name="author_id" ref="author1"/>
+            <field name="publisher_id" ref="publisher1"/>
+        </record>
+
+        <record id="book3" model="bookdatabase.book">
+            <field name="name">El Útimo Deseo</field>
+            <field name="date_publish">1993-01-01</field>
+            <field name="author_id" ref="author2"/>
+            <field name="publisher_id" ref="publisher2"/>
+        </record>
+
+        <record id="book4" model="bookdatabase.book">
+            <field name="name">Tiempo de odio</field>
+            <field name="date_publish">1993-01-01</field>
+            <field name="author_id" ref="author2"/>
+            <field name="publisher_id" ref="publisher2"/>
+        </record>
+
+        <record id="comment1" model="bookdatabase.comment">
+            <field name="name">Muy interesante</field>
+            <field name="datetime_publish">2020-01-01</field>
+            <field name="book_id" ref="book1"/>
+            <field name="creator_id" ref="user_demo"/>
+            <field name="description">Esta lectura es como un libro de historia, que cuenta la creación de Arda y todo lo relevante que sucedió antes de El Hobbit o El Señor de los Anillos. </field>
+        </record>
+
+        <record id="comment2" model="bookdatabase.comment">
+            <field name="name">Grandioso!</field>
+            <field name="datetime_publish">2020-01-01</field>
+            <field name="book_id" ref="book1"/>
+            <field name="creator_id" ref="user_demo"/>
+            <field name="description">Este libro es grandioso. Te cuenta la historia de los elfos de la Primera Edad de Arda y de los Ainur, los hijos de Ilúvatar o Eru. También como los elfos y sus líderes luchan contra el tirano Morgoth el Ainur rebelde y todas las guerras que suceden. Es indispensable para conocer el universo de Tolkien. </field>
+        </record>
+
+        <record id="comment3" model="bookdatabase.comment">
+            <field name="name">Duro de leer</field>
+            <field name="datetime_publish">2020-01-01</field>
+            <field name="book_id" ref="book1"/>
+            <field name="creator_id" ref="user_demo"/>
+            <field name="description">Puede hacerse super empalagoso y pesado de leer si no asimilas bien este tipo de lecturas puramente narrativas. Al principio es probable que te hagas un lio con los nombres de personajes y de lugares por esa variedad de "lenguas" que usan pero si estás concentrado puedes seguir el hilo sin perderte demasiado.</field>
+        </record>
+
+        <record id="comment4" model="bookdatabase.comment">
+            <field name="name">Solo para fans</field>
+            <field name="datetime_publish">2020-01-01</field>
+            <field name="book_id" ref="book1"/>
+            <field name="creator_id" ref="user_demo"/>
+            <field name="description">Un libro muy completo que se hace denso a veces. Trata de explicar como funcionaba la tierra media antes de "El hobbit" y "El señor de los anillos" con personajes que aperecen de pasada en estos cuatro libros.</field>
+        </record>
     </data>
 </odoo>
